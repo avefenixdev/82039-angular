@@ -1,0 +1,33 @@
+<h1>Listado de productos</h1>
+<hr>
+<div class="flex flex-wrap gap-4 mt-4">
+  @for (product of products(); track $index) {
+    <div class="max-w-sm rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 p-5">
+
+    <!-- Nombre -->
+    <h2 class="text-lg font-semibold text-gray-900 leading-tight">
+      {{ product.nombre }}
+    </h2>
+
+    <!-- Categoría -->
+    <p class="text-sm text-gray-500 mt-1">
+      Categoría: <span class="font-medium text-gray-700">{{ product.categoria }}</span>
+    </p>
+
+    <!-- Precio -->
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-xl font-bold text-gray-900">
+        {{ formatear(product.precio) }}
+      </span>
+
+      <!-- Stock -->
+      <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-green-100 text-green-700">
+        {{ product.stock }}
+      </span>
+    </div>
+
+  </div>
+  }
+</div>
+
+<app-tabla [products]="products"></app-tabla>

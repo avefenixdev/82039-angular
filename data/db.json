@@ -1,0 +1,40 @@
+{
+  "productos": [
+    {
+      "nombre": "Laptop Lenovo IdeaPad 3",
+      "categoria": "Electrónica",
+      "precio": 750000,
+      "stock": 12,
+      "id": "e_W0rduByWQ"
+    },
+    {
+      "nombre": "Auriculares Bluetooth Sony",
+      "categoria": "Electrónica",
+      "precio": 85000,
+      "stock": 30,
+      "id": "XdsQJ_k0IOo"
+    },
+    {
+      "nombre": "Silla de Oficina Ergonómica",
+      "categoria": "Muebles",
+      "precio": 120000,
+      "stock": 8,
+      "id": "kwtD3NmXm_c"
+    },
+    {
+      "nombre": "Zapatillas Deportivas Nike",
+      "categoria": "Ropa",
+      "precio": 95000,
+      "stock": 20,
+      "id": "sS48dPrmwRc"
+    },
+    {
+      "nombre": "Cafetera Automática Philips",
+      "categoria": "Electrodomésticos",
+      "precio": 210000,
+      "stock": 5,
+      "id": "Xxq4E3kjekc"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

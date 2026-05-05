@@ -1,0 +1,18 @@
+<h1>Página Nosotros</h1>
+<hr>
+
+<h2>Contador: {{ contadorService.contador() }}</h2>
+
+<button
+  (click)="contadorService.incrementar()"
+  class="btn-success me-2"
+  >
+    Incrementar
+</button>
+<button
+  (click)="contadorService.decrementar()"
+  class="btn-danger"
+  >
+    Decrementar
+</button>
+

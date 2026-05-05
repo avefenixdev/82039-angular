@@ -1,0 +1,41 @@
+<h2 class="mt-10">Tabla de Productos (CRUD)</h2>
+<hr>
+
+<button 
+    class="my-5 cursor-pointer rounded bg-lime-500 px-3 py-1 text-white hover:bg-lime-600"
+    routerLink="/productos/crear">
+    Crear un producto
+</button>
+
+<div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+    <table class="min-w-full divide-y divide-gray-200 text-sm">
+        <thead class="bg-gray-100">
+            <tr>
+                <th class="px-4 py-3 text-left font-semibold text-gray-700">Producto</th>
+                <th class="px-4 py-3 text-left font-semibold text-gray-700">Categoría</th>
+                <th class="px-4 py-3 text-left font-semibold text-gray-700">Precio</th>
+                <th class="px-4 py-3 text-left font-semibold text-gray-700">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 bg-white">
+            @for (product of products(); track product.id) {
+            <tr class="hover:bg-gray-50 transition">
+                <td class="px-4 py-2 text-gray-600">{{ product.nombre }}</td>
+                <td class="px-4 py-2 text-gray-600">{{ product.categoria }}</td>
+                <td class="px-4 py-2 text-gray-600">{{ product.precio }}</td>
+                <td class="px-4 py-2 text-gray-600">
+                    <button class="me-3 cursor-pointer rounded bg-blue-500 px-3 py-1 text-white hover:bg-blue-600">
+                        Ver
+                    </button>
+                    <button class="me-3 cursor-pointer rounded bg-yellow-500 px-3 py-1 text-white hover:bg-yellow-600">
+                        Editar
+                    </button>
+                    <button (click)="eliminarById(product.id)" class="cursor-pointer rounded bg-red-500 px-3 py-1 text-white hover:bg-red-600">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

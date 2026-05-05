@@ -1,0 +1,111 @@
+<h2 class="text-xl font-semibold mt-5">Formularios usando Reactive Form</h2>
+<hr>
+
+<form
+  [formGroup]="form"
+  (ngSubmit)="enviarRf()"
+  class="max-w-xl mx-auto p-6 bg-white shadow rounded space-y-4"
+>
+
+  <!-- Mensaje de todo OK -->
+  @if (enviado()) {
+    <div class="alert-success">
+      Formulario enviado correctamente
+    </div>
+  }
+
+  <!-- Nombre -->
+  <input
+    type="text"
+    name="name"
+    required
+    formControlName="nombre"
+    placeholder="Nombre"
+    class="input"
+  >
+
+  @if (nombre?.touched && nombre?.invalid) {
+    <div class="alert">
+
+      @if (nombre?.errors?.['required']) {
+        <p>Campo requerido</p>
+      }
+
+      @if (nombre?.errors?.['minlength']) {
+        <p>Mínimo {{sizeMinNombre}} caracteres</p>
+      }
+
+      @if (nombre?.errors?.['maxlength']) {
+        <p>Máximo {{sizeMaxNombre}} caracteres</p>
+      }
+
+      @if (nombre?.errors?.['sinespacios']) {
+        <p> {{ nombre?.errors?.['sinespacios'] }}</p>
+      }
+
+    </div>
+  }
+
+  <!-- notación corchete y notación punto -->
+
+  <!-- Correo -->
+  <input
+    type="email"
+    name="email"
+    required
+    formControlName="correo"
+    pattern=".+@gmail\.com"
+    placeholder="Correo"
+    class="input"
+  >
+
+  @if (correo?.touched && correo?.invalid) {
+    <div class="alert">
+      @if (correo?.errors?.['required']) {
+        <p>Correo obligatorio</p>
+      }
+
+      @if (correo?.errors?.['email']) {
+        <p>El correo no cumple con las políticas de correo válido</p>
+      }
+
+    </div>
+  }
+
+  <!-- Edad -->
+  <input
+    type="number"
+    name="age"
+    required
+    formControlName="edad"
+    placeholder="Edad"
+    class="input"
+  >
+  <!-- País -->
+  <input
+    type="text"
+    name="country"
+    required
+    formControlName="pais"
+    placeholder="País"
+    class="input"
+  >
+  <!-- Biografía -->
+  <textarea
+    name="bio"
+    placeholder="Biografía"
+    class="input"
+    required
+    formControlName="biografia"
+  >
+  </textarea>
+
+  <button
+    type="submit"
+    class="btn-primary"
+    [disabled]="form.invalid"
+  >
+    Enviar
+  </button>
+
+</form>

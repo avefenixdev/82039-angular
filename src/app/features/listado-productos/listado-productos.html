@@ -1,0 +1,53 @@
+<h2 class="text-2xl">Listado de productos</h2>
+
+<div class="flex flex-wrap gap-4 mt-4">
+  @for (producto of productos(); track $index) {
+  <div class="max-w-sm rounded-2xl shadow-md border border-gray-200 bg-white hover:shadow-lg transition-shadow duration-300 p-5 space-y-4">
+
+    <!-- Header -->
+    <div class="flex justify-between items-start">
+      <a class="hover:underline" routerLink="/productos-detalle/{{producto.id}}">
+        <h3 class="text-lg font-semibold text-gray-800 hover:text-blue-800">
+          {{ producto.name }}
+        </h3>
+      </a>
+
+      <!-- Active Badge -->
+      <span class="text-xs font-medium px-2 py-1 rounded-full
+         {{ producto.active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }} ">
+        {{ producto.active ? 'Active' : 'Inactive' }}
+      </span>
+    </div>
+
+    <!-- Category -->
+    <span class="inline-block text-xs font-medium px-2 py-1 rounded-md bg-blue-100 text-blue-700">
+      {{ producto.category }}
+    </span>
+
+    <!-- Description -->
+    <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+      {{ producto.description }}
+    </p>
+
+    <!-- Price + Stock -->
+    <div class="flex justify-between items-center pt-2">
+
+      <!-- Price -->
+      <div class="text-xl font-bold text-gray-900">
+        ${{ producto.price }}
+      </div>
+
+      <!-- Stock -->
+      <div class="text-sm font-medium px-2 py-1 rounded-md
+        bg-yellow-100 text-yellow-800">
+        {{ producto.stock }}
+      </div>
+    </div>
+
+  </div>
+  }
+</div>
+
+
+
+

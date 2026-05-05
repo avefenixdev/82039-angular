@@ -1,0 +1,43 @@
+<h1>Formulario de carga de productos</h1>
+<hr>
+
+<div class="mx-auto max-w-md rounded-lg border p-6 shadow mt-5">
+    <form [formGroup]="form" (ngSubmit)="enviar()" class="space-y-4">
+
+        <input 
+            type="text"
+            placeholder="Nombre"
+            formControlName="nombre"
+            class="w-full rounded border px-3 py-2"
+        >
+
+        <input 
+            type="text"
+            placeholder="Categoría"
+            formControlName="categoria"
+            class="w-full rounded border px-3 py-2"
+        >
+        <input 
+            type="text"
+            placeholder="Precio"
+            formControlName="precio"
+            class="w-full rounded border px-3 py-2"
+        >
+
+        <input 
+            type="text"
+            placeholder="Stock"
+            formControlName="stock"
+            class="w-full rounded border px-3 py-2"
+        >
+
+        <button 
+            type="submit"
+            [disabled]="form.invalid"
+            class="w-full rounded cursor-pointer bg-blue-600 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
+        >
+            Guardar
+        </button>
+
+    </form>
+</div>
