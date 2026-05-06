@@ -1,0 +1,40 @@
+<div class="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-6 mt-10">
+  <!-- Título -->
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">
+    {{ product().nombre }}
+  </h2>
+
+  <!-- Categoría -->
+  <span class="inline-block bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full mb-4">
+    {{ product().categoria }}
+  </span>
+
+  <!-- Precio -->
+  <div class="mb-4">
+    <p class="text-gray-500 text-sm">Precio</p>
+    <p class="text-3xl font-semibold text-green-600">
+      {{ formatear(product().precio) }}
+    </p>
+  </div>
+
+  <!-- Stock -->
+  <div class="mb-4">
+    <p class="text-gray-500 text-sm">Stock disponible</p>
+    <p class="text-lg font-medium text-gray-800">
+      {{ product().stock }}
+    </p>
+  </div>
+
+  <!-- ID -->
+  <div class="mb-6">
+    <p class="text-gray-500 text-sm">ID del producto</p>
+    <p class="text-sm text-gray-600">
+      {{ product().id }}
+    </p>
+  </div>
+
+  <!-- Botón -->
+  <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-xl transition">
+    Agregar al carrito
+  </button>
+</div>

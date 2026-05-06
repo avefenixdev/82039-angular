@@ -34,6 +34,13 @@
       "precio": 210000,
       "stock": 5,
       "id": "Xxq4E3kjekc"
+    },
+    {
+      "nombre": "Heladera",
+      "categoria": "Electro",
+      "precio": "222.3",
+      "stock": "32",
+      "id": "xpxePLjCSEk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

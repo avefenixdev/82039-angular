@@ -12,17 +12,22 @@ export class Productos {
   constructor(private http: HttpClient) {}
 
   // ! Cuando yo trabajo con HttpClient lo que devuelve son observables.
-  /* CRUD -> R:READ -> GET */
+  /* CRUD -> R:READ -> GET ALL */
   getProductos() {
     return this.http.get<any[]>(this.apiURL) // Me devuelve, retonar un observable
   }
+
+  getProductosById(id: string) {
+    return this.http.get<any[]>(`${this.apiURL}${id}`) // Me devuelve, retonar un observable
+  }
+
   /* CRUD -> C:CREATE -> POST */
   crearProducto(producto: any) {
     return this.http.post<any>(this.apiURL, producto) // Me devuelve, retonar un observable
   }
 
   actualizarProducto(id: string, producto: any) {
-    return this.http.put<any>(`${this.apiURL}/${id}`, producto) // Me devuelve, retonar un observable
+    return this.http.put<any>(`${this.apiURL}${id}`, producto) // Me devuelve, retonar un observable
   }
 
   eliminarProducto(id: string) {

@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { Productos } from '../../services/productos';
 import { Tabla } from '../../shared/components/tabla/tabla'
+import { FormatearPrecio } from '../../services/formatear-precio';
 
 @Component({
   selector: 'app-productos-async',
@@ -13,7 +14,7 @@ export class ProductosAsync {
   products = signal<any[]>([])
   // https://rxjs.dev/guide/operators
   // Inyección de dependencias -> herencia dinamica.
-  constructor(public productoService: Productos) {
+  constructor(public productoService: Productos, private formatearPrecioService: FormatearPrecio) {
     this.cargarProductos()
   }
 
@@ -32,12 +33,6 @@ export class ProductosAsync {
   }
 
   formatear(precio: number) {
-    const formatter = new Intl.NumberFormat('es-AR', {
-      style: 'currency',
-      currency: 'ARS',
-      minimumFractionDigits: 2
-    })
-
-    return formatter.format(precio)
+    return this.formatearPrecioService.formatear(precio)
   }
 }

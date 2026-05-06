@@ -1,7 +1,8 @@
 import { Component, Input, Signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Productos } from '../../../services/productos';
 import { Notificacion } from '../../../services/notificacion';
+import { FormatearPrecio } from '../../../services/formatear-precio';
 
 @Component({
   selector: 'app-tabla',
@@ -10,15 +11,19 @@ import { Notificacion } from '../../../services/notificacion';
   styleUrl: './tabla.css',
 })
 export class Tabla {
-  
-  constructor(private productoService: Productos, private notificacionService: Notificacion) {}
 
-  @Input({ required: true }) products!: Signal<any[]> 
+  constructor(
+    private productoService: Productos,
+    private notificacionService: Notificacion,
+    private router: Router,
+    private formatearPrecioService: FormatearPrecio) {}
+
+  @Input({ required: true }) products!: Signal<any[]>
 
   eliminarById( id:string ) {
 
     this.notificacionService.confirmacion(
-        '¿Eliminar producto?', 
+        '¿Eliminar producto?',
         'Está acción no se puede deshacer')
           .then((result) => {
             if (result.isConfirmed) {
@@ -40,4 +45,11 @@ export class Tabla {
 
   }
 
+  detalleProducto( id:string ) {
+    this.router.navigate(['/productos', id])
+  }
+
+  formatear(precio: number) {
+    return this.formatearPrecioService.formatear(precio)
+  }
 }
